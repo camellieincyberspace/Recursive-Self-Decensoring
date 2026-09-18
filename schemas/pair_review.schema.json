@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "PairReview v1",
+  "required": [
+    "case_id",
+    "teacher_requirements_lost",
+    "new_baseline_regressions",
+    "candidate_evidence",
+    "decision",
+    "needs_human"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "teacher_requirements_lost": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "new_baseline_regressions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "candidate_evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision": {
+      "enum": [
+        "pass",
+        "reject",
+        "hold"
+      ]
+    },
+    "needs_human": {
+      "type": "boolean"
+    }
+  }
+}

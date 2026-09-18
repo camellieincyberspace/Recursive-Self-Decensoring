@@ -1,0 +1,37 @@
+{
+  "configuration_status": "DESIGN_TEMPLATE; supply a qualified backend factory, not a turnkey loader",
+  "model": {
+    "id": null,
+    "revision": null,
+    "artifact_sha256": null,
+    "profile": null,
+    "runtime_revision": null
+  },
+  "research": {
+    "mode": "descendant_handoff",
+    "discovery_family_restriction": null,
+    "allow_nonmonotonic_archived_parents": true,
+    "compact_compile_is_mandatory_for_research": false,
+    "extension_qualification": "isolated_tests_then_register; not yet automated"
+  },
+  "judge": {
+    "url": null,
+    "model": null,
+    "api_key_env": "RSD_JUDGE_API_KEY",
+    "separate_context": true,
+    "frozen_within_epoch": true,
+    "warning_penalty": 0
+  },
+  "budgets": {
+    "total_trials": 20,
+    "target_tokens": null,
+    "judge_tokens": null,
+    "wall_seconds": null,
+    "note": "reference core enforces trials only; production backends must enforce other budgets"
+  },
+  "release": {
+    "real_model_tested": false,
+    "strong_rsd_validated": false,
+    "independent_artifact_qualification_required": true
+  }
+}

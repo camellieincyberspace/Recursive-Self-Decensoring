@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "recursive-self-decensoring"
+version = "0.2.0"
+description = "Model-agnostic recursive research, semantic evidence, and optional compact edit compilation"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+test = ["pytest>=7", "jsonschema>=4"]
+hooks = ["torch>=2.2"]
+
+[project.scripts]
+rsd = "rsd.__main__:main"
+recipe-lab = "recipe_lab.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

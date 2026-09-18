@@ -1,0 +1,15 @@
+{
+  "synthetic_only": true,
+  "real_llm_tested": false,
+  "strong_rsd_empirically_validated": false,
+  "trials": 4,
+  "distinct_researcher_identities": 4,
+  "event_chain_valid": true,
+  "target_scores": [
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "interpretation": "Scripted fixtures only; identity succession, not model improvement evidence."
+}

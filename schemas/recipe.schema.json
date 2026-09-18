@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "Frozen T1 RecipeManifest v1; future production wrapper",
+  "required": [
+    "schema_version",
+    "recipe_id",
+    "family",
+    "source_sha256",
+    "model_revision",
+    "runtime_revision",
+    "targets",
+    "qualification"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "recipe_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "family": {
+      "const": "symmetric_output"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "model_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runtime_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "qualification": {
+      "enum": [
+        "numeric_only",
+        "runtime_qualified",
+        "release_qualified"
+      ]
+    },
+    "targets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "tensor_name",
+          "module_name",
+          "matrix_shape",
+          "rank",
+          "array_file",
+          "array_sha256",
+          "bias_mode"
+        ],
+        "properties": {
+          "tensor_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "module_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "matrix_shape": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "rank": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "array_file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "array_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bias_mode": {
+            "enum": [
+              "none",
+              "project_same_operator"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

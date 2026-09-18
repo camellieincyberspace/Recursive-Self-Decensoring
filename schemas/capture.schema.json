@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "CaptureManifest v1",
+  "required": [
+    "schema_version",
+    "model_revision",
+    "artifact_sha256",
+    "runtime_revision",
+    "tokenizer_sha256",
+    "template_sha256",
+    "node",
+    "node_semantics",
+    "tensor_file",
+    "tensor_sha256",
+    "shape",
+    "dtype",
+    "position_mode",
+    "case_ids"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "model_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "runtime_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tokenizer_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "template_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "node": {
+      "type": "string",
+      "minLength": 1
+    },
+    "node_semantics": {
+      "const": "linear_writer_output_before_residual_add"
+    },
+    "tensor_file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tensor_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "shape": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      }
+    },
+    "dtype": {
+      "enum": [
+        "float16",
+        "float32"
+      ]
+    },
+    "position_mode": {
+      "enum": [
+        "prompt_end",
+        "teacher_forced_fixed_positions",
+        "free_generation_tracked_positions"
+      ]
+    },
+    "case_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    }
+  }
+}
